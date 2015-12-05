@@ -13,6 +13,7 @@ router.get('/location/review/new', ctrlLocations.addReview);
 
 /* Other pages */
 router.get('/about', ctrlOthers.about);
+router.get('/information', ctrlOthers.information);
 
 
 module.exports = router;
