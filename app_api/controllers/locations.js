@@ -4,7 +4,10 @@ var Loc = mongoose.model('Location');
 
 
 /* Get location */
-module.exports.locationsRead = function (req, res) { };
+module.exports.locationsListByDistance = function (req, res) {
+  res.status(200);
+  res.json({"status" : "success"});
+ };
 
 /* post location */
 module.exports.locationsCreate = function (req, res) {
@@ -13,13 +16,22 @@ module.exports.locationsCreate = function (req, res) {
  };
 
 /* Get location */
-module.exports.locationsRead = function (req, res) { };
+module.exports.locationsReadOne = function (req, res) {
+  res.status(200);
+  res.json({"status" : "success"}); 
+};
 
 /* put location */
-module.exports.locationsUpdate = function (req, res) { };
+module.exports.locationsUpdateOne = function (req, res) {
+  res.status(200);
+  res.json({"status" : "success"});
+};
 
 /* delete location */
-module.exports.locationsDelete = function (req, res) { };
+module.exports.locationsDeleteOne = function (req, res) { 
+  res.status(200);
+  res.json({"status" : "success"});
+};
  
 
 var sendJsonResponse = function(res, status, content) {
