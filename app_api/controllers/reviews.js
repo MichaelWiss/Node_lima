@@ -9,6 +9,33 @@ module.exports.reviewsCreate = function (req, res) {
 
 /* get reviews */
 module.exports.reviewsReadOne = function (req, res) {
+  if (req.params && req.params.locationid && req.params.reviewid) {
+  	Loc
+  	  findbyId(req.params.locationid)
+  	  .select('name reviews')
+  	  .exec(
+  	  	function(err, location) {
+  	  		var response, review;
+  	  		if (!location) {
+  	  			sendJsonResponse(res, 404, {
+  	  				"message": "locationid not found"
+  	  			});
+  	  	    return;
+  	  		} else if (err) {
+  	  		  sendJsonResponse (res, 400, err);
+  	  		  return;
+  	  		}
+  	  		if (location.review)
+  	  	})
+  }
+
+
+
+
+
+
+
+
   res.status(200);
   res.json({"status" : "success"});
 };
