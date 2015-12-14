@@ -25,20 +25,36 @@ module.exports.reviewsReadOne = function (req, res) {
   	  		  sendJsonResponse (res, 400, err);
   	  		  return;
   	  		}
-  	  		if (location.review)
-  	  	})
+  	  		if (location.review && location.reviews.length > 0) {
+  	  			review = location.reviews.id(req.params.reviewid);
+  	  			if (!review) {
+  	  				sendJsonResponse(res, 404, {
+  	  					"message": "reviewid not found"
+  	  				});
+  	  			} else {
+  	  			  response = {
+  	  			  	location : {
+  	  			  		name :location.name,
+  	  			  		 id : req.params.locationid
+  	  			  	},
+  	  			  	review : review
+  	  			  };
+  	  			  sendJsonResponse(res, 200, response); 
+  	  			}
+  } else {
+  	sendJsonResponse(res, 404, {
+  		"message": "No reviews found"
+  	});
   }
-
-
-
-
-
-
-
-
-  res.status(200);
-  res.json({"status" : "success"});
+ }
+);
+ } else {
+   sendJsonResponse(res, 404, {
+   	 "message": "Not found, locationid and reviewid are bot required"
+   });
+ }
 };
+
 
 /* put reviews */
 module.exports.reviewsUpdateOne = function(req, res) {
