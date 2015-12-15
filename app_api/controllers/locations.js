@@ -6,12 +6,39 @@ var sendJSONresponse = function(res, status, content) {
 	res.json(content);
 };
 
+var theEarth = (function() {
+	var earthRadius = 3959; //miles, km is 6371
+
+	var getDistanceFromRads = function(rads) {
+	 return parseFloat(rads * earthRadius);
+	};
+
+	var getRadsFromDistance = function(distance) {
+	 return parseFloat(distance / earthRadius);
+	};
+
+	return {
+	   getDistanceFromRads: getDistanceFromRads,
+	   getRadsFromDistance: getRadsFromDistance
+	};
+})();
 
 
-/* Get location */
+
+/* Get list of locations */
 module.exports.locationsListByDistance = function (req, res) {
-  res.status(200);
-  res.json({"status" : "success"});
+   var lng = parseFloat (req.query.lng);
+   var lat = parseFloat (req.query.lat);
+   var point = {
+   	 type: "Point",
+   	 coordinate: [lng, lat]
+   };
+   var geoOptions = {
+   	spherical: true,
+   	maxDistance: theEarth.getRadsFromDistance(20),
+   	num: 10
+   };
+   Loc.geoNear(point, geoOptions, callback);
  };
 
 /* post location */
