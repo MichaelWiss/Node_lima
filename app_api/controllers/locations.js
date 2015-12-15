@@ -1,6 +1,11 @@
 var mongoose = require('mongoose');
 var Loc = mongoose.model('Location');
 
+var sendJSONresponse = function(res, status, content) {
+	res.status(status);
+	res.json(content);
+};
+
 
 
 /* Get location */

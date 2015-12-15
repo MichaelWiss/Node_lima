@@ -50,7 +50,7 @@ module.exports.reviewsReadOne = function (req, res) {
 );
  } else {
    sendJsonResponse(res, 404, {
-   	 "message": "Not found, locationid and reviewid are bot required"
+   	 "message": "Not found, locationid and reviewid are both required"
    });
  }
 };
