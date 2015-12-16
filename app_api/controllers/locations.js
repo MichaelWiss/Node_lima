@@ -29,6 +29,7 @@ var theEarth = (function() {
 module.exports.locationsListByDistance = function (req, res) {
    var lng = parseFloat (req.query.lng);
    var lat = parseFloat (req.query.lat);
+   var maxDistance = parseFloat(req.query.maxDistance);
    var point = {
    	 type: "Point",
    	 coordinate: [lng, lat]
@@ -38,7 +39,27 @@ module.exports.locationsListByDistance = function (req, res) {
    	maxDistance: theEarth.getRadsFromDistance(20),
    	num: 10
    };
-   Loc.geoNear(point, geoOptions, callback);
+   if (!lng || !lat || !maxDistance) {
+   	console.log('locationsListByDistance missing params');
+   	sendJSONresponse(res, 404, {
+   		"message": "lng, lat and maxDistance query parameters are all required"
+   	});
+   	return;
+   }
+   Loc.geoNear(point, geoOptions, function(err, results, stats) {
+   	var locations;
+   	console.log('Geo results', results);
+   	console.log('Geo stats', stats);
+   	if (err) {
+   		console.log('geoNear error:', err);
+   		sendJSONresponse(res, 404, err);
+   	} else {
+   		locations = buildLocationList(req, res, results, stats) {
+   			
+   		}
+   	}
+   	}
+   }
  };
 
 /* post location */
