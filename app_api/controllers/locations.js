@@ -54,13 +54,20 @@ module.exports.locationsListByDistance = function (req, res) {
    		console.log('geoNear error:', err);
    		sendJSONresponse(res, 404, err);
    	} else {
-   		locations = buildLocationList(req, res, results, stats) {
-   			
-   		}
+   		locations = buildLocationList(req, res, results, stats); 
+        sendJSONresponse(res, 200, locations);
    	}
-   	}
-   }
+   });
  };
+
+ var buildlocationList = function(req, res, results, stats) {
+ 	var locations = [];
+ 	results.forEach(function(doc) {
+ 		locations.push({
+ 			distance: theEarth.getDistance
+ 		})
+ 	})
+ }
 
 /* post location */
 module.exports.locationsCreate = function (req, res) {
