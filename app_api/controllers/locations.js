@@ -66,10 +66,14 @@ module.exports.locationsListByDistance = function (req, res) {
  		locations.push({
  			distance: theEarth.getDistanceFromRads(doc.dis),
  			name: doc.obj.name,
- 			
- 		})
- 	})
- }
+ 			address: doc.obj.address,
+ 			rating: doc.obj.rating,
+ 			facilities: doc.obj.facilities,
+ 			_id: doc.obj._id
+ 		});
+ 	});
+ 	return locations;
+ };
 
 /* post location */
 module.exports.locationsCreate = function (req, res) {
