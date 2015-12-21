@@ -64,7 +64,9 @@ module.exports.locationsListByDistance = function (req, res) {
  	var locations = [];
  	results.forEach(function(doc) {
  		locations.push({
- 			distance: theEarth.getDistance
+ 			distance: theEarth.getDistanceFromRads(doc.dis),
+ 			name: doc.obj.name,
+ 			
  		})
  	})
  }
