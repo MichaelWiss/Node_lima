@@ -137,7 +137,7 @@ module.exports.locationsCreate = function (req, res) {
  /* put /api/locations/:locationid */
 module.exports.locationsUpdateOne = function (req, res) {
   if (!req.params.locationid) {
-  	sendJSONresponse(res, 404 {
+  	sendJSONresponse(res, 404, {
   		"message": "Not found, locationid is required"
   	});
   	return;
@@ -152,7 +152,7 @@ module.exports.locationsUpdateOne = function (req, res) {
        			"message": "locationid not found"
        		});
        	    return;
-       	} elseif (err) {
+       	} else if (err) {
        	   sendJSONresponse(res, 400, err);
        	   return;
        	}
