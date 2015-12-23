@@ -183,18 +183,25 @@ module.exports.locationsUpdateOne = function (req, res) {
 /* delete location */
 module.exports.locationsDeleteOne = function (req, res) { 
   var locationid = req.params.locationid;
-  if
-  res.status(200);
-  res.json({"status" : "success"});
-};
+  if (location) {
+  	Loc 
+  	 .findByIdAndRemove(locationid)
+  	 .exec(
+  	 	function(err, location) {
+  	 		if (err) {
+  	 		  console.log(err);
+  	 		  sendJSONresponse(res, 404, err);
+  	 		  return;
+  	 		}
+  	 		console.log("location id " + locationid + " deleted");
+  	 		sendJSONresponse(res, 204, null);
+  	 	   }
+  	 	  );
+       } else {
+       	 sendJSONresponse(res, 404, {
+       	 	"message": "No locationid"
+       	 });
+       }
+    };
  
-
-var sendJsonResponse = function(res, status, content) {
-  res.status(status);
-  res.json(content);
-};
-module.exports.locationsCreate = function (req, res) {
-  sendJsonResponse(res, 200, {"status" : "success"});
-};
-
 
