@@ -83,21 +83,21 @@ module.exports.locationsReadOne = function (req, res) {
     .findById(req.params.locationid)
     .exec(function(err, location) {
      if (!location) {
-       sendJsonResponse (res, 404, {
+       sendJSONResponse (res, 404, {
        	  "message": "locationid not found"
        });
        return
      } else if (err) {
        console.log(err);
-       sendJsonResponse(res, 404, err);
+       sendJSONresponse(res, 404, err);
        return;
      }
      console.log(location)
-     sendJsonResponse(res, 200, location);
+     sendJSONresponse(res, 200, location);
     });
    } else {
    	 console.log('No locationid specified');
-   	 sendJsonResponse (res, 404, {
+   	 sendJSONresponse (res, 404, {
    	 	"message": "No locationid in request"
    	 });
    }
