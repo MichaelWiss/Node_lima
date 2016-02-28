@@ -3,6 +3,7 @@ var Loc = mongoose.model('Location');
 
 /*p ost reviews */
 module.exports.reviewsCreate = function (req, res) {
+  var locationid = req.params.locationid;
   res.status(200);
   res.json({"status" : "success"});
 };
