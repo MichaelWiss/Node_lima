@@ -4,8 +4,24 @@ var Loc = mongoose.model('Location');
 /*p ost reviews */
 module.exports.reviewsCreate = function (req, res) {
   var locationid = req.params.locationid;
-  res.status(200);
-  res.json({"status" : "success"});
+  if (locationid) {
+  	Loc
+  	  .findById(LocationId)
+  	  .select('reviews')
+  	  .exec(
+  	  	function(err, location  {
+  	  		if (err) {
+  	  			sendJsonResponse(res, 400, err);
+  	  		} else {
+  	  			doAddReview(req, res, location);
+  	  		}
+  	  	   }
+  	  	  );
+  	  } else {
+  	  	sendJsonResponse(res, 404, {
+  	  		"message": "Not found, locationid required"
+  	  	});
+  	  }
 };
 
 /* get reviews */
