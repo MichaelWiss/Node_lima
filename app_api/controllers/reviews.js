@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Loc = mongoose.model('Location');
 
-/*p ost reviews */
+/*post reviews */
 module.exports.reviewsCreate = function (req, res) {
   var locationid = req.params.locationid;
   if (locationid) {
@@ -23,6 +23,18 @@ module.exports.reviewsCreate = function (req, res) {
   	  	});
   	  }
 };
+
+var doAddReview = function(req, res, location) {
+  if (!location) {
+  	sendJSONresponse(res, 404, "locationid not found");
+  } else {
+  	location.reviews.push({
+  		author: req.body.author,
+  		rationg: req.body.rating,
+  		reviewsTexe: req.body.reviewText
+  	});
+  }
+}
 
 /* get reviews */
 module.exports.reviewsReadOne = function (req, res) {
