@@ -80,44 +80,7 @@ var doSetAverageRating = function(location) {
 	}
 };
 
-module.exports.locationsUpdateOne = function(req, res) {
-	if(!req.params.locationid) {
-		sendJsonResponse(res, 404, {
-			"message": "Not found, locationid is required"
-		});
-		return;
-	}
-	Loc 
-	  .findById(req.params.locationid)
-	  .select('-reviews -rating')
-	  .exec(
-	  	function(err, location) {
-	  		if (!location) {
-	  			sendJsonResponse(res, 404, {
-	  				"message": "locationid not found"
-	  			});
-	  			return;
-	  		} else if (err) {
-	  			sendJsonResponse(res, 400, err);
-	  			return;
-	  		} 
-	  		location.name = req.body.name;
-	  		location.address = req.body.address;
-	  		location.facilities = req.body.facilities.split(",");
-	  		location.coords = [parseFloat(req.body.lng), parseFloat(req.body.lat)];
-	  		location.openingTimes = [{
-	  			days: req.body.days1,
-	  			opening: req.body.opening1,
-	  			closing: req.body.closing1,
-	  			closed: req.body.closed1,
-	  		}, {
-	  			
-	  		}]
 
-	  		}
-	  		}
-	  	})
-}
 
 /* get reviews */
 module.exports.reviewsReadOne = function (req, res) {
@@ -177,8 +140,41 @@ module.exports.reviewsUpdateOne = function(req, res) {
 /* delete location */
 
 module.exports.reviewsDeleteOne = function(req, res) {
-  res.status(200);
-  res.json({"status" : "success"});
+  if (!req.params.locationid || !req.params.reviewid) {
+  	sendJsonResponse(res, 404, {
+  		"message": "Not found, locationid and reviewid and reviewid are both required"
+  	});
+  	return;
+  }
+  Loc
+     .findById(req.params.location.id)
+     .select('reviews')
+     .exec(
+     	function(err,location) {
+     		var thisReview;
+     		if (!location) {
+     			sendJsonResponse(res, 404, {
+     				"message": "locationid not found"
+     			});
+     			return;
+     		} else if (err) {
+     			sendJsonResponse(res, 400, err);
+     			return;
+     		}
+     		if (location.reviews && location.reviews.length >0) {
+     			thisReview = location.reviews.id(req.params.reviewid);
+     			if (!thisReview) {
+     			  sendJsonResponse(res, 404, {
+     			  	 "message": "reviewid not found"
+     			  });
+     			} else {
+     				thisReview.author = req.body.author;
+     				thisReview.rating = req.body.rating;
+     				thisReview.reviewText = req.body.reviewText;
+     				
+     			}
+     		}
+     	})
 }; 
 
 
