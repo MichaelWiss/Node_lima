@@ -80,6 +80,38 @@ var doSetAverageRating = function(location) {
 	}
 };
 
+module.exports.locationsUpdateOne = function(req, res) {
+	if(!req.params.locationid) {
+		sendJsonResponse(res, 404, {
+			"message": "Not found, locationid is required"
+		});
+		return;
+	}
+	Loc 
+	  .findById(req.params.locationid)
+	  .select('-reviews -rating')
+	  .exec(
+	  	function(err, location) {
+	  		if (!location) {
+	  			sendJsonResponse(res, 404, {
+	  				"message": "locationid not found"
+	  			});
+	  			return;
+	  		} else if (err) {
+	  			sendJsonResponse(res, 400, err);
+	  			return;
+	  		} 
+	  		location.name = req.body.name;
+	  		location.address = req.body.address;
+	  		location.facilities = req.body.facilities.split(",");
+	  		location.coords = [parseFloat(req.body.lng), parseFloat(req.body.lat)];
+	  		location.openingTimes = [{}]
+
+	  		}
+	  		}
+	  	})
+}
+
 /* get reviews */
 module.exports.reviewsReadOne = function (req, res) {
   if (req.params && req.params.locationid && req.params.reviewid) {
