@@ -33,6 +33,9 @@ var doAddReview = function(req, res, location) {
   		rationg: req.body.rating,
   		reviewsTexe: req.body.reviewText
   	});
+  	location.save(function(err, location) {
+  		var thisReview
+  	})
   }
 }
 
