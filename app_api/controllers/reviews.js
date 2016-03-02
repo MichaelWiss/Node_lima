@@ -34,10 +34,16 @@ var doAddReview = function(req, res, location) {
   		reviewsTexe: req.body.reviewText
   	});
   	location.save(function(err, location) {
-  		var thisReview
-  	})
+  		var thisReview;
+  		if (err) {
+  			sendJSONresponse(res, 400, err);
+  		} else {
+  			thisReview = location.reviews[location.reviews.length -1];
+  			sendJsonResponse(res, 201, thisReview);
+  		}
+  	});
   }
-}
+};
 
 /* get reviews */
 module.exports.reviewsReadOne = function (req, res) {
