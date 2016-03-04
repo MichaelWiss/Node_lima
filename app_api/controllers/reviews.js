@@ -131,15 +131,9 @@ module.exports.reviewsReadOne = function (req, res) {
 };
 
 
+
 /* put reviews */
 module.exports.reviewsUpdateOne = function(req, res) {
-  res.status(200);
-  res.json({"status" : "success"}); 
-};
-
-/* delete location */
-
-module.exports.reviewsDeleteOne = function(req, res) {
   if (!req.params.locationid || !req.params.reviewid) {
   	sendJsonResponse(res, 404, {
   		"message": "Not found, locationid and reviewid and reviewid are both required"
@@ -171,11 +165,31 @@ module.exports.reviewsDeleteOne = function(req, res) {
      				thisReview.author = req.body.author;
      				thisReview.rating = req.body.rating;
      				thisReview.reviewText = req.body.reviewText;
-     				
-     			}
+     				location.save(function(err,location) {
+     					if (err) {
+     						sendJsonResponse(res, 404, err);
+     					} else {
+     						updateAverageRating(location._id);
+     						sendJsonResponse(res, 200, thisReview);
+     					}
+     				});
+                   }
+     		} else {
+     			sendJsonResponse(res, 404, {
+     				"message": "No review to update"
+     			});
      		}
-     	})
+     	  }
+     	);
 }; 
+
+
+/* delete location */
+
+module.exports.reviewsDeleteOne = function(req, res) {
+  res.status(200);
+  res.json({"status" : "success"}); 
+};
 
 
 var sendJsonResponse = function(res, status, content) {
