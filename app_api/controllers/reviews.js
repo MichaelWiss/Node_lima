@@ -187,15 +187,32 @@ module.exports.reviewsUpdateOne = function(req, res) {
 /* delete location */
 
 module.exports.reviewsDeleteOne = function(req, res) {
-  res.status(200);
-  res.json({"status" : "success"}); 
+  if (!req.params.locationid || !req.params.reviewid) {
+  	sendJsonResponse(res, 404, {
+  		"message": "Not found, locationid and reviewid are both required"
+  	});
+  	return;
+  }
+  Loc
+    .findById(req.params.location)
+    .select('reviews')
+    .exec(
+    	function(err, location) {
+    		if (!location) {
+    		sendJsonResponse(res, 404, {
+    			"message": "locationid not found"
+    		});
+    		return;
+    		} else if (err) {
+    		  sendJsonResponse(res, 400, err);
+    		  return;
+    		}
+    		
+    	})
 };
 
 
 var sendJsonResponse = function(res, status, content) {
   res.status(status);
   res.json(content);
-};
-module.exports.locationsCreate = function (req, res) {
-  sendJsonResponse(res, 200, {"status" : "success"});
 };
