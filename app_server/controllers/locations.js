@@ -8,7 +8,6 @@ if (process.env.NODE_ENV === 'production') {
 
 
 var renderHomepage = function(req, res, responseBody){
-  
   res.render('locations-list', {
     title: 'Loc8r - find a place to work with wifi',
     pageHeader: {
