@@ -7,7 +7,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 
-var renderHomepage = function(req, res, responseBody){
+var renderHomepage = function(req, res, responseBody) {
   res.render('locations-list', {
     title: 'Loc8r - find a place to work with wifi',
     pageHeader: {
@@ -35,9 +35,16 @@ module.exports.homelist = function(req, res){
    	  }
    };
    request(
-     requestOptions,
-     function(err, response, body) {
-     	renderHomepage(req, res);
+    requestOptions,
+    function(err, response, body) {
+      var i, data;
+      data = body;
+      if (response.statusCode === 200 && data.length) {
+        for (i=0; i<data.length; i++) {
+          data[i].distance = _formatDistance(data[i].distance);
+        }
+      }
+      renderHomepage(req, res, data);
      }
    	);
 };
