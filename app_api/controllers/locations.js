@@ -26,7 +26,7 @@ var theEarth = (function() {
 
 
 /* Get list of locations */
-module.exports.locationsListByDistance = function (req, res) {
+module.exports.locationsListByDistance = function(req, res) {
    var lng = parseFloat (req.query.lng);
    var lat = parseFloat (req.query.lat);
    var maxDistance = parseFloat(req.query.maxDistance);
