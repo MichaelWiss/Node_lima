@@ -32,7 +32,7 @@ module.exports.locationsListByDistance = function(req, res) {
    var maxDistance = parseFloat(req.query.maxDistance);
    var point = {
    	 type: "Point",
-   	 coordinate: [lng, lat]
+   	 coordinates: [lng, lat]
    };
    var geoOptions = {
    	spherical: true,
@@ -60,7 +60,7 @@ module.exports.locationsListByDistance = function(req, res) {
    });
  };
 
- var buildlocationList = function(req, res, results, stats) {
+ var buildLocationList = function(req, res, results, stats) {
  	var locations = [];
  	results.forEach(function(doc) {
  		locations.push({
