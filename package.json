@@ -19,6 +19,7 @@
     "morgan": "~1.6.1",
     "request": "^2.69.0",
     "serve-favicon": "~2.3.0",
-    "merge-descriptors": "~1.0.1"
+    "merge-descriptors": "~1.0.1",
+    "finalhandler": "~0.4.1"
   }
 }
