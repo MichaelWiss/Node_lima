@@ -83,7 +83,7 @@ module.exports.locationsReadOne = function (req, res) {
     .findById(req.params.locationid)
     .exec(function(err, location) {
      if (!location) {
-       sendJSONResponse (res, 404, {
+       sendJSONresponse (res, 404, {
        	  "message": "locationid not found"
        });
        return
@@ -189,7 +189,7 @@ module.exports.locationsDeleteOne = function (req, res) {
   	 .exec(
   	 	function(err, location) {
   	 		if (err) {
-  	 		  sendJSONesponse(res, 404, err);
+  	 		  sendJSONresponse(res, 404, err);
   	 		  return;
   	 		}
   	 		console.log("location id " + locationid + " deleted");
