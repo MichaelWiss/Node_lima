@@ -55,7 +55,7 @@ module.exports.locationsListByDistance = function(req, res) {
    		sendJSONresponse(res, 404, err);
    	} else {
    		locations = buildLocationList(req, res, results, stats); 
-        sendJSONresponse(res, 200, locations);
+      sendJSONresponse(res, 200, locations);
    	}
    });
  };
