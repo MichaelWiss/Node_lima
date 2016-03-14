@@ -10,6 +10,7 @@
     "npm": "~2.2.0"
   },
   "dependencies": {
+    "accepts": "^1.3.2",
     "array-flatten": "~2.0.0",
     "body-parser": "~1.13.2",
     "content-disposition": "^0.5.1",
