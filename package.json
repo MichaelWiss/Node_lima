@@ -29,6 +29,7 @@
     "path-to-regexp": "^1.2.1",
     "qs": "^6.1.0",
     "request": "^2.69.0",
+    "send": "^0.13.2",
     "serve-favicon": "~2.3.0"
   }
 }
