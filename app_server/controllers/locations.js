@@ -21,7 +21,7 @@ var _formatDistance = function (distance) {
 	}
 	return numDistance + unit; 
   } else {
-  	return "?"
+  	return "?";
   }
  };
 
