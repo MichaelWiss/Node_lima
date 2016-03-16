@@ -92,7 +92,7 @@ module.exports.locationsReadOne = function (req, res) {
        sendJSONresponse(res, 404, err);
        return;
      }
-     console.log(location)
+     console.log(location);
      sendJSONresponse(res, 200, location);
     });
    } else {
@@ -166,9 +166,10 @@ module.exports.locationsUpdateOne = function (req, res) {
        		closing: req.body.closing1,
        		closed: req.body.closed1,
        	}, {
-       		days: req.body.opening2,
-       		opening: req.body.closing2,
-       		closing: req.body.closed2, 
+       		days: req.body.days2,
+       		opening: req.body.opening2,
+       		closing: req.body.closed2,
+          closed: req.body.closed2, 
        	}];
        	location.save(function(err, location) {
            if (err) {
@@ -189,6 +190,7 @@ module.exports.locationsDeleteOne = function (req, res) {
   	 .exec(
   	 	function(err, location) {
   	 		if (err) {
+          console.log(err);
   	 		  sendJSONresponse(res, 404, err);
   	 		  return;
   	 		}
