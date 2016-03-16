@@ -121,6 +121,15 @@ module.exports.locationInfo = function(req, res){
   });
 };
 
+var renderReviewForm = function (req, res, locDetail) {
+  res.render('location-review-form', {
+  	title: 'Review ' + locDetail.name + locDetail.name },
+  	pageHeader: { title: 'Review ' + locDetail.name },
+  	error: req.query.err
+  });
+};
+
+
 
 
 /* Get  'Add review' page*/
