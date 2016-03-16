@@ -1,4 +1,4 @@
-var mongoose = require( 'mongoose' );
+var mongoose = require('mongoose');
 
 var reviewSchema = new mongoose.Schema({
 	author: String,
