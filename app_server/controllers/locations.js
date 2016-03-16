@@ -31,6 +31,9 @@ var _showError = function (req, res, status) {
 	if (status === 404) {
 		title = "404, page not found";
 		content = "Oh dear.  Looks like we can't find this page. Sorry";
+	} else if (status === 500) {
+		title = "500, internal server error";
+		content = "How embarassing.  There's a problem with our server";
 	} else {
 		title = status + ", something's gone wrong";
 		content = "Something, somewhere, has gone just a little bit wrong.";
@@ -103,7 +106,7 @@ var getLocationInfo = function (req, res, callback) {
           lng : body.coords[0],
           lat : body.coords[1]
         };
-        renderDetailPage(req, res, data);
+        callback(req, res, data);
       } else {
         _showError(req, res, response.statusCode);
       }
