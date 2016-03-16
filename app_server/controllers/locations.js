@@ -129,11 +129,18 @@ var renderReviewForm = function (req, res, locDetail) {
   });
 };
 
+/* Get 'Add review' page */
+module.exports.addReview = function(req, res){
+	getLocationInfo(req, res, function(req, res, responseData) {
+		renderReviewForm(req, res, responseData);
+	});
+};
+
 
 
 
 /* Get  'Add review' page*/
-module.exports.addReview = function(req, res){
+/*module.exports.addReview = function(req, res){
 	res.render('location-review-form', {
 	  title: 'Review Starcups on Loc8r',
 	  pageHeader: { title: 'Review Starcups' }
