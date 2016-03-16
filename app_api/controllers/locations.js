@@ -86,7 +86,7 @@ module.exports.locationsReadOne = function (req, res) {
        sendJSONresponse (res, 404, {
        	  "message": "locationid not found"
        });
-       return
+       return;
      } else if (err) {
        console.log(err);
        sendJSONresponse(res, 404, err);
