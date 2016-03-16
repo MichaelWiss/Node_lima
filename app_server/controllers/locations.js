@@ -114,6 +114,18 @@ var getLocationInfo = function (req, res, callback) {
   );
 };
 
+var renderDetailPage = function (req, res, locDetail) {
+  res.render('location-info', {
+    title: locDetail.name,
+    pageHeader: {title: locDetail.name},
+    sidebar: {
+      context: 'is on Loc8r because it has accessible wifi and space to sit down with your laptop and get some work done.',
+      callToAction: 'If you\'ve been and you like it - or if you don\'t - please leave a review to help other people just like you.'
+    },
+    location: locDetail
+  });
+};
+
 /* GET 'Location info' page */
 module.exports.locationInfo = function(req, res){
   getLocationInfo(req, res, function(req, res, responseData) {
