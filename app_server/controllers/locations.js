@@ -81,7 +81,7 @@ module.exports.homelist = function(req, res){
    	  qs : {
    	  	lng : -0.7992599,
    	  	lat : 51.378091,
-   	  	maxDistance : 20
+   	  	maxDistance : 100
    	  }
    };
    request(
@@ -135,7 +135,6 @@ var renderDetailPage = function (req, res, locDetail) {
     location: locDetail
   });
 };
-
 /* GET 'Location info' page */
 module.exports.locationInfo = function(req, res){
   getLocationInfo(req, res, function(req, res, responseData) {
