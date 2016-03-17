@@ -96,7 +96,7 @@ module.exports.homelist = function(req, res){
       }
       renderHomepage(req, res, body);
      }
-   	);
+   );
 };
 
 var getLocationInfo = function (req, res, callback) {
