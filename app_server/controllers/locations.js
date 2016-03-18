@@ -157,6 +157,10 @@ module.exports.addReview = function(req, res){
 	});
 };
 
+module.exports.doAddReview = function(req, res){
+  
+}
+
 /* POST 'add review' page */
 
 
