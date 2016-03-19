@@ -25,7 +25,7 @@
     "merge-descriptors": "~1.0.1",
     "methods": "^1.1.2",
     "module_name": "^1.0.0",
-    "mongoose": "^4.4.7",
+    "mongoose": "4.4.8",
     "morgan": "~1.6.1",
     "ms": "~0.7.1",
     "path-to-regexp": "^1.2.1",

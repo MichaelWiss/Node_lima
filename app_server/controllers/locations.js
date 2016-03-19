@@ -21,7 +21,7 @@ var _formatDistance = function (distance) {
 	  unit = 'm';
 	}
 	return numDistance + unit; 
-  } else {
+} else {
   	return "?";
   }
  };
@@ -44,8 +44,6 @@ var _showError = function (req, res, status) {
 		content : content
 	});
  };
-
-
 
 var renderHomepage = function(req, res, responseBody){
   var message;
@@ -158,7 +156,7 @@ module.exports.addReview = function(req, res){
 };
 
 module.exports.doAddReview = function(req, res){
-  
+
 }
 
 /* POST 'add review' page */
