@@ -82,7 +82,7 @@ module.exports.homelist = function(req, res){
    	  	maxDistance : 100
    	  }
    };
-   request(
+  request(
     requestOptions,
     function(err, response, body) {
       var i, data;
@@ -92,9 +92,9 @@ module.exports.homelist = function(req, res){
           data[i].distance = _formatDistance(data[i].distance);
         }
       }
-      renderHomepage(req, res, body);
-     }
-   );
+      renderHomepage(req, res, data);
+    }
+  );
 };
 
 var getLocationInfo = function (req, res, callback) {
