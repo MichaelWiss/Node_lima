@@ -149,12 +149,6 @@ var renderReviewForm = function (req, res, locDetail) {
   });
 };
 
-/* Get 'Add review' page */
-module.exports.addReview = function(req, res){
-	getLocationInfo(req, res, function(req, res, responseData) {
-		renderReviewForm(req, res, responseData);
-	});
-};
 
 
 /* GET 'Add review' page */
