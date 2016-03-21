@@ -150,7 +150,6 @@ var renderReviewForm = function (req, res, locDetail) {
 };
 
 
-
 /* GET 'Add review' page */
 module.exports.addReview = function(req, res){
   getLocationInfo(req, res, function(req, res, responseData) {
