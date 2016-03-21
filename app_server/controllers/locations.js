@@ -144,7 +144,8 @@ var renderReviewForm = function (req, res, locDetail) {
   res.render('location-review-form', {
   	title: 'Review ' + locDetail.name + ' on Loc8r',
   	pageHeader: { title: 'Review ' + locDetail.name },
-  	error: req.query.err
+    error: req.query.err,
+    url: req.originalUrl
   });
 };
 
@@ -156,7 +157,14 @@ module.exports.addReview = function(req, res){
 };
 
 
-/*POST 'Add review' page */
+/* GET 'Add review' page */
+module.exports.addReview = function(req, res){
+  getLocationInfo(req, res, function(req, res, responseData) {
+    renderReviewForm(req, res, responseData);
+  });
+};
+
+/* POST 'Add review' page */
 module.exports.doAddReview = function(req, res){
   var requestOptions, path, locationid, postdata;
   locationid = req.params.locationid;
@@ -171,18 +179,21 @@ module.exports.doAddReview = function(req, res){
     method : "POST",
     json : postdata
   };
-  request (
-    requestOptions,
-    function(err, response, body) {
-      if (response.statusCode === 201) {
-        res.redirect('/location/' + locationid);
-      } else {
-        _showError(req, res, response.statusCode);
+  if (!postdata.author || !postdata.rating || !postdata.reviewText) {
+    res.redirect('/location/' + locationid + '/reviews/new?err=val');
+  } else {
+    request(
+      requestOptions,
+      function(err, response, body) {
+        if (response.statusCode === 201) {
+          res.redirect('/location/' + locationid);
+        } else if (response.statusCode === 400 && body.name && body.name === "ValidationError" ) {
+          res.redirect('/location/' + locationid + '/reviews/new?err=val');
+        } else {
+          console.log(body);
+          _showError(req, res, response.statusCode);
+        }
       }
-    }
-  );
-};
-
-
-
-
+    );
+  }
+  };
