@@ -156,21 +156,33 @@ module.exports.addReview = function(req, res){
 };
 
 
-
+/*POST 'Add review' page */
 module.exports.doAddReview = function(req, res){
-
-}
-
-/* POST 'add review' page */
-
-
-
-/* Get  'Add review' page*/
-/*module.exports.addReview = function(req, res){
-	res.render('location-review-form', {
-	  title: 'Review Starcups on Loc8r',
-	  pageHeader: { title: 'Review Starcups' }
-	});
+  var requestOptions, path, locationid, postdata;
+  locationid = req.params.locationid;
+  path = "/api/locations/" + locationid + '/reviews';
+  postdata = {
+    author: req.body.name,
+    rating: parseInt(req.body.rating, 10),
+    reviewText: req.body.review
+  };
+  requestOptions = {
+    url : apiOptions.server + path,
+    method : "POST",
+    json : postdata
+  };
+  request (
+    requestOptions,
+    function(err, response, body) {
+      if (response.statusCode === 201) {
+        res.redirect('/location/' + locationid);
+      } else {
+        _showError(req, res, response.statusCode);
+      }
+    }
+  );
 };
 
-/* Get */
+
+
+
