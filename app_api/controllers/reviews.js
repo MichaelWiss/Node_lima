@@ -118,11 +118,13 @@ module.exports.reviewsUpdateOne = function(req, res) {
             thisReview.rating = req.body.rating;
             thisReview.reviewText = req.body.reviewText;
             location.save(function(err, location) {
+              var thisReview;
               if (err) {
                 sendJSONresponse(res, 404, err);
               } else {
                 updateAverageRating(location._id);
-                sendJSONresponse(res, 200, thisReview);
+                thisReview = location.reviews[location.reviews.length -1];
+                sendJSONresponse(res, 201, thisReview);
               }
             });
           }
