@@ -52,10 +52,9 @@ block content
                       span.rating
                         +outputRating(review.rating)
                       span.reviewAuthor #{review.author}
-                      small.reviewTimestamp #{review.createdOn}
-                       +formatDate{review.createdOn}
-                      
-                    .col-xs-12
+                      small.reviewTimestamp
+                        +formatDate(review.createdOn)
+                      .col-xs-12
                         p  !{(review.reviewText).replace(/\n/g, '<br/>')}
         .col-xs-12.col-md-3
       p.lead #{location.name} #{sidebar.context}
