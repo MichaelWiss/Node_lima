@@ -123,7 +123,6 @@ module.exports.reviewsUpdateOne = function(req, res) {
                 sendJSONresponse(res, 404, err);
               } else {
                 updateAverageRating(location._id);
-                thisReview = location.reviews[location.reviews.length -1];
                 sendJSONresponse(res, 201, thisReview);
               }
             });
