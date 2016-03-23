@@ -16,7 +16,9 @@ var locationListCtrl = function ($scope) {
 			facilities: ['Hot drinks', 'Food', 'Premium wifi', 'Alcoholic drinks'],
 			distance: '0.7865456',
 			_id: '5370a35f2536f6785f8dfb6a'
-           }
-		}]
-	}
-}
+        }]};
+};
+
+angular
+   .module('loc8rApp')
+   .controller('locationListCtrl', locationListCtrl);
