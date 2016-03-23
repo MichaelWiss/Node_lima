@@ -45,7 +45,7 @@ var _showError = function (req, res, status) {
 	});
  };
 
-var renderHomepage = function(req, res, responseBody){
+var renderHomepage = function(req, res){
   res.render('locations-list', {
     title: 'Loc8r - find a place to work with wifi',
     pageHeader: {
