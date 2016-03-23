@@ -9,17 +9,16 @@ block content
           h1= pageHeader.title
            small &nbsp;#{pageHeader.strapline}
    .row
-      .col-xs-12.col-sm-8{ng-controller="locationListCtrl"}
+      .col-xs-12.col-sm-8(ng-controller="locationListCtrl")
       .error {{ message }}
       .row.list-group
           .col-xs-12.list-group-item(ng-repeat="location in data.locations")
             h4
-              a(href="/location/{{ location._id  }}") {{ location }}"
+              a(href="/location/{{ location._id  }}") {{ location.name }}"
               small {{ location.rating }}
               span.badge.pull-right.badge-default {{ location.distance }} 
             p.address {{ location.address }}
             p
-              span.label.label-warning.label-facility(ng-repeat="facility in location.facilities")
-              | {{ facility }}
+              span.label.label-warning.label-facility(ng-repeat="facility in location.facilities") | {{ facility }}
       .col-xs-12.col-sm-4
         p.lead= sidebar
