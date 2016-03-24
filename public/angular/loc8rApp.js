@@ -58,8 +58,11 @@ var geolocation = function() {
 
 
 var locationListCtrl = function ($scope, loc8rData, geolocation) {
-	$scope.message = "Searching for nearby places";
-	loc8rData
+	$scope.message = "Checking your location";
+
+   $scope.getData = function (position) {
+	 $scope.message = "Searching for nearby places";
+	 loc8rData
 	  .success(function(data) {
 	  	$scope.message = data.length > 0 ? "" : "No locations found";
 	    $scope.data = { locations: data };
@@ -68,6 +71,19 @@ var locationListCtrl = function ($scope, loc8rData, geolocation) {
 	 	   $scope.message = "Sorry, something's gone wrong";
 	    });
     };
+    $scope.showError = function (error) {
+    	$scope.$apply(function() {
+    		$scope.message = error.message;
+    	});
+    };
+
+    $scope.noGeo = function () {
+    	$scope.$apply(function() {
+    		$scope.message = "Geolocation not supported by this browser.";
+    	});
+    };
+    geolocation.getPosition($scope.getData,$scope.showError,$scope.noGeo);
+};
 
      var loc8rData = function ($http) {
     	return $http.get('/api/locations?lng=-0.79&lat=51.3&maxDistance=20');
