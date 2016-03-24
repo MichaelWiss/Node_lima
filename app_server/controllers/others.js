@@ -6,7 +6,11 @@ module.exports.about = function(req, res){
   });
 };
 
-/* Get information pae */
+/* Get information page */
 module.exports.information = function(req, res){
 	res.render('generic', { title: 'Information' });
+};
+
+module.exports.angularApp = function(req, res) {
+	res.render('layout', { title: 'Loc8r' });
 };
