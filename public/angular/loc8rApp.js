@@ -41,9 +41,23 @@ var ratingStars = function () {
 	}];
 }; */
 
+var geolocation = function() {
+	var getPosition = function (cbSuccess, cbError, cbnoGeo) {
+	  if (navigator.geolocation) {
+	  	navigator.geolocation.getCurrentPosition(cbSuccess, cbError);
+	  }
+      else {
+	    cbNoGeo();
+      }
+     };
+     return {
+	     getPosition :getPosition
+       };
+   };
 
 
-var locationListCtrl = function ($scope, loc8rData) {
+
+var locationListCtrl = function ($scope, loc8rData, geolocation) {
 	$scope.message = "Searching for nearby places";
 	loc8rData
 	  .success(function(data) {
@@ -67,4 +81,5 @@ angular
   .controller('locationListCtrl', locationListCtrl)
   .filter('formatDistance', formatDistance)
   .directive('ratingStars', ratingStars)
-  .service('loc8rData', loc8rData);
+  .service('loc8rData', loc8rData)
+  .service('geolocation', geolocation);
