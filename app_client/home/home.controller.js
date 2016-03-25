@@ -1,7 +1,7 @@
 angular
     .module('loc8rApp')
     .controller('homeCtrl', homeCtrl);
-function homeCtrl ($scope) {
+function homeCtrl (loc8rData, geolocation) {
 	var vm = this;
 	vm.pageHeader = {
 		title: 'Loc8r',
@@ -10,4 +10,14 @@ function homeCtrl ($scope) {
 	vm.sidebar = {
 		content: "Looking for wifi and a seat? Loc8r helps you find places to work when out and about. Perhaps with coffee, cake or a pint? Let Loc8r help you find the place you're looking for."
 	};
+	vm.message = "Checking your location";
+	vm.getData = function (position) {
+		var lat = position.coords.latitude.
+		    lng = paosition.coords.longitude;
+		vm.message = "Searching for nearby places";
+		loc8rData.locationByCoords(lat, lng)
+           .success(function(data) {
+           	 vm.message = data.length > 0 ? " ": "No locations found nearby"
+           })
+	}
 }
