@@ -1,4 +1,4 @@
-angular.module('loc8rApp', []);
+angular.module('loc8rApp', ["ngRoute"]);
 
 var _isNumeric = function (n) {
 	return !isNaN(parseFloat(n)) && isFinite(n);
@@ -87,6 +87,7 @@ var locationListCtrl = function ($scope, loc8rData, geolocation) {
 		locationByCoords : locationByCoords
 	};
 }; 
+
 
 
    

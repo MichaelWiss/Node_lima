@@ -3,7 +3,7 @@ angular
  .service('geolocation', geolocation);
 
 function geolocation () {
-	var getPostition = function (cbSuccess, cbError, cbNoGeo) {
+	var getPosition = function (cbSuccess, cbError, cbNoGeo) {
 		if (navigator.geolocation) {
 			navigator.geolocation.getCurrentPosition(cbSuccess, cbError);
 		}
