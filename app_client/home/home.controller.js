@@ -17,7 +17,23 @@ function homeCtrl (loc8rData, geolocation) {
 		vm.message = "Searching for nearby places";
 		loc8rData.locationByCoords(lat, lng)
            .success(function(data) {
-           	 vm.message = data.length > 0 ? " ": "No locations found nearby"
+           	 vm.message = data.length > 0 ? " ": "No locations found nearby";
+           	 vm.data = { locations: data };
            })
-	}
+           .error(function (e) {
+           	vm.message = "Sorry, something's gone wrong";
+           });
+	};
+	vm.showError = function (error) {
+		vm.$apply(function() {
+			vm.message = error.message;
+		});
+	};
+
+	vm.noGeo = function () {
+		vm.$apply(function() {
+			vm.message = "Geolocation is not supported by this browser.";
+		});
+	};
+	geolocation.getPosition(vm.getData,vm.showError,vm.noGeo);
 }
