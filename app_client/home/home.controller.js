@@ -1,5 +1,3 @@
-(function () {
-
 angular
     .module('loc8rApp')
     .controller('homeCtrl', homeCtrl);
@@ -13,9 +11,10 @@ function homeCtrl ($scope, loc8rData, geolocation) {
 		content: "Looking for wifi and a seat? Loc8r helps you find places to work when out and about. Perhaps with coffee, cake or a pint? Let Loc8r help you find the place you're looking for."
 	};
 	vm.message = "Checking your location";
+
 	vm.getData = function (position) {
 		var lat = position.coords.latitude.
-		    lng = paosition.coords.longitude;
+		    lng = position.coords.longitude;
 		vm.message = "Searching for nearby places";
 		loc8rData.locationByCoords(lat, lng)
            .success(function(data) {
@@ -40,4 +39,3 @@ function homeCtrl ($scope, loc8rData, geolocation) {
 	geolocation.getPosition(vm.getData,vm.showError,vm.noGeo);
 }
 
-})();
