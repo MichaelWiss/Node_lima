@@ -18,7 +18,7 @@ function formatDistance () {
 			  unit = 'm';
 			}
 			return numDistance + unit;
-		  } else {
+		   } else {
 			return "?";
 		}
 	};
