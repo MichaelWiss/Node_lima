@@ -1,3 +1,6 @@
+(function () {
+
+
 angular
   .module('loc8rApp')
   .directive('ratingStars', ratingStars);
@@ -11,3 +14,5 @@ function ratingStars () {
 		templateUrl: '/common/directives/ratingStars/ratingStars.template.html'
 	};
 }
+
+})();
