@@ -14,6 +14,11 @@ angular.module('loc8rApp', ['ngRoute', 'ngSanitize']);
         controller: 'aboutCtrl',
         controllerAs: 'vm'
       })
+      .when('/location/:locationid', {
+        templateUrl: '/locationDetail/locationDetail.view.html',
+        controller: 'locationDetailCtrl',
+        controllerAs: 'vm'
+      })
       .otherwise({redirectTo: '/'});
 
     $locationProvider.html5Mode(true);
