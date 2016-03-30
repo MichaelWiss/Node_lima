@@ -11,7 +11,7 @@ angular.module('loc8rApp', ['ngRoute']);
       })
       .when('/about', {
         templateUrl: '/common/views/genericText.view.html',
-        controller: 'homeCtrl',
+        controller: 'aboutCtrl',
         controllerAs: 'vm'
       })
       .otherwise({redirectTo: '/'});
