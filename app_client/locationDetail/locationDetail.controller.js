@@ -13,7 +13,7 @@
 		   .success(function(data) {
              vm.data = { location: data };
              vm.pageHeader = {
-			    title: vm.location.id
+			    title: vm.data.location.name
 		     };
 	        })
             .error(function (e) {
