@@ -9,6 +9,11 @@ angular.module('loc8rApp', ['ngRoute']);
         controller: 'homeCtrl',
         controllerAs: 'vm'
       })
+      .when('/about', {
+        templateUrl: '/common/views/genericText.view.html',
+        controller: 'homeCtrl',
+        controllerAs: 'vm'
+      })
       .otherwise({redirectTo: '/'});
 
     $locationProvider.html5Mode(true);
