@@ -37,7 +37,7 @@
 			return false;
 		};
         
-        var.modal = {
+        vm.modal = {
         	cancel : function () {
         		$modalInstance.dismiss('cancel');
         	}
