@@ -21,6 +21,21 @@
 			vm.doAddReview(vm.locationData.locationid, vm.formData);
 		 }
 		};
+
+		vm.doAddReview = function (locationid, formData) {
+			loc8rData.addReviewById(locationid, {
+				author : formData.name,
+				rating : formData.rating,
+				reviewText : formData.reviewText
+			})
+			.success(function (data) {
+				console.log("Success!");
+			})
+			.error(function (data) {
+				vm.formError = "Yur review has not been saved, try again";
+			});
+			return false;
+		};
         
         var.modal = {
         	cancel : function () {
