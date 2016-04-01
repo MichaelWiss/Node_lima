@@ -4,8 +4,8 @@
     .module('loc8rApp')
     .controller('locationDetailCtrl', locationDetailCtrl);
 
-  locationDetailCtrl.$inject = ['$routeParams', '$modal', 'loc8rData'];
-  function locationDetailCtrl ($routeParams, $modal, loc8rData) {
+  locationDetailCtrl.$inject = ['$routeParams', '$uibModal', 'loc8rData'];
+  function locationDetailCtrl ($routeParams, $uibModal,  loc8rData) {
     var vm = this;
     vm.locationid = $routeParams.locationid;
 
@@ -21,7 +21,7 @@
       });
 
     vm.popupReviewForm = function () {
-      var modalInstance = $modal.open({
+      var modalInstance = $uibModal.open({
         templateUrl: '/reviewModal/reviewModal.view.html',
         controller: 'reviewModalCtrl as vm',
         resolve : {
