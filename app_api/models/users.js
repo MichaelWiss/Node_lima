@@ -1,6 +1,6 @@
 var mongoose = require( 'mongoose' );
 
-var userSchema = new mongoose.Schema([
+var userSchema = new mongoose.Schema({
 	email: {
 		type: String,
 		unique: true,
@@ -12,4 +12,4 @@ var userSchema = new mongoose.Schema([
 	},
 	hash: String,
 	salt: String
-    ]);
+    });
