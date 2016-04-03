@@ -26,11 +26,16 @@
     		});
     	};
 
+    	logout = function() {
+            $window.localStorage.removeItem('loc8r-token');
+        };
+
     	return {
     		saveToken : saveToken,
     		getToken : getToken,
     		register : register,
-    		login : login
+    		login : login,
+    		logout : logout
     	};
     }
 })();
