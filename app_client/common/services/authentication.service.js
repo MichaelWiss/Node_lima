@@ -14,6 +14,18 @@
     		return $window.localStorage['loc8r-token'];
     	};
 
+    	var isLoggedIn = function() {
+    		var token = getToken();
+
+    		if (token){
+    			var payload = JSON.parse($window.atob(token.split('.')[1]));
+
+    		    return payload.exp > Date.now() / 1000;
+    		  } else {
+    		  	return false;
+    		  }
+    	};
+
     	register = function(user) {
     		return $http.post('/api/register', user).success(function(data){
     			saveToken(data.token);
