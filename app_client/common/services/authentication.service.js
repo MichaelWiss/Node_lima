@@ -14,9 +14,23 @@
     		return $window.localStorage['loc8r-token'];
     	};
 
+    	register = function(user) {
+    		return $http.post('/api/register', user).success(function(data){
+    			saveToken(data.token);
+    		});
+    	};
+
+    	login = function(user) {
+    		return $http.post('/api/login', user).success(function(data) {
+    			saveToken(data.token);
+    		});
+    	};
+
     	return {
     		saveToken : saveToken,
-    		getToken : getToken
+    		getToken : getToken,
+    		register : register,
+    		login : login
     	};
     }
 })();
