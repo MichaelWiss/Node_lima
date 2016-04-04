@@ -31,7 +31,7 @@
        };
 
        vm.doRegister = function() {
-       	vm.forError = "";
+       	vm.formError = "";
        	authentication
        	   .register(vm.credentials)
        	   .error(function(err){

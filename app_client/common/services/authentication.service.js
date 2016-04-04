@@ -54,6 +54,7 @@
         };
 
     	return {
+    		currentUser : currentUser,
     		saveToken : saveToken,
     		getToken : getToken,
     		register : register,
