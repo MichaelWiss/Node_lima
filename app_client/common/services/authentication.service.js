@@ -3,8 +3,8 @@
 	  .module('loc8rApp')
 	  .service('authentication', authentication);
 
-    authentication.$inject = ['$http','$window'];
-    function authentication ('$http, $window) {
+    authentication.$inject = ['$window', '$http'];
+    function authentication ($window, $http) {
 
     	var saveToken = function (token) {
     		$window.localStorage['loc8r-token'] = token;
