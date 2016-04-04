@@ -1,5 +1,4 @@
 (function () {
-
   angular
     .module('loc8rApp')
     .controller('registerCtrl', registerCtrl);
@@ -9,8 +8,7 @@
     var vm = this;
 
     vm.pageHeader = {
-      title: 'Create a new Loc8r account'
-    };
+      title: 'Create a new Loc8r account'};
 
     vm.credentials = {
       name : "",
