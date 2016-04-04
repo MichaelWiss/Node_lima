@@ -24,7 +24,6 @@ var appClientFiles = [
   'app_client/app.js',
   'app_client/home/home.controller.js',
   'app_client/about/about.controller.js',
-  'app_client/auth/login/login.controller.js',
   'app_client/auth/register/register.controller.js',
   'app_client/locationDetail/locationDetail.controller.js',
   'app_client/reviewModal/reviewModal.controller.js',
@@ -77,7 +76,7 @@ app.use(function(req, res, next) {
 app.use(function (err, req, res, next) {
   if (err.name === 'UnauthorizedError') {
     res.status(401);
-    res.json{"message" : err.name + ": " + err.message});
+    res.json({"message" : err.name + ": " + err.message});
   }
 });
 
