@@ -3,7 +3,7 @@
     .module('loc8rApp')
     .controller('loginCtrl', loginCtrl);
 
-  registerCtrl.$inject = ['$location','authentication'];
+  loginCtrl.$inject = ['$location','authentication'];
   function loginCtrl($location, authentication) {
     var vm = this;
 
@@ -11,7 +11,6 @@
       title: 'Sign in to Loc8r'};
 
     vm.credentials = {
-      name : "",
       email : "",
       password : ""
     };
@@ -31,7 +30,7 @@
     vm.doLogin = function() {
       vm.formError = "";
       authentication
-        .Login(vm.credentials)
+        .login(vm.credentials)
         .error(function(err){
           vm.formError = err;
         })
@@ -40,7 +39,5 @@
           $location.path(vm.returnPage);
         });
     };
-
-  }
-
+    }
 })();

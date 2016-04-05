@@ -24,6 +24,11 @@ angular.module('loc8rApp', ['ngRoute', 'ngSanitize', 'ui.bootstrap']);
         controller: 'registerCtrl',
         controllerAs: 'vm'
       })
+      .when('/login', {
+        templateUrl: '/auth/login/login.view.html',
+        controller: 'loginCtrl',
+        controllerAs: 'vm'
+      })
       .otherwise({redirectTo: '/'});
 
     $locationProvider.html5Mode(true);
