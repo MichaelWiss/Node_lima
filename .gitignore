@@ -1,5 +1,4 @@
-# Dependency directory
-node_modules
-
-#Environment variables
-.env
+/node_modules
+npm-debug.log
+.DS_Store
+/*.env
