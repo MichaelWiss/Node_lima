@@ -8,7 +8,7 @@ angular
 loc8rData.$inject = ['$http', 'authentication'];
 function loc8rData ($http, authentication) {
 	var locationByCoords = function (lat, lng) {
-		return $http.get('/api/locations?lng=' + lng + '&lat=' + lat + '&maxDistance=20');
+		return $http.get('/api/locations?lng=' + lng + '&lat=' + lat + '&maxDistance=100');
 	};
 
 	var locationById = function (locationid) {
@@ -21,7 +21,7 @@ function loc8rData ($http, authentication) {
 				Authorization: 'Bearer '+ authentication.getToken()
 			}
 		});
-	}
+	};
 
 	return {
 		locationByCoords : locationByCoords,
