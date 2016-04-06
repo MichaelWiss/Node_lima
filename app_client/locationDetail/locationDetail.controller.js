@@ -1,8 +1,8 @@
 (function() {
   angular.module('loc8rApp').controller('locationDetailCtrl', locationDetailCtrl);
 
-  locationDetailCtrl.$inject = ['$routeParams', '$location', '$uibModal', 'loc8rData', 'authentication'];
-  function locationDetailCtrl($routeParams, $location, $uibModal, loc8rData, authentication) {
+  locationDetailCtrl.$inject = ['$routeParams', '$location', 'loc8rData', '$uibModal', 'authentication'];
+  function locationDetailCtrl($routeParams, $location, loc8rData, $uibModal, authentication) {
     var vm = this;
     vm.locationid = $routeParams.locationid;
 
