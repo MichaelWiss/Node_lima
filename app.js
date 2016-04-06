@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var uglifyJs = require("uglify-js");
 var fs = require('fs');
 var passport = require('passport');
+
 require('./app_api/models/db');
 require('./app_api/config/passport');
 
@@ -28,8 +29,8 @@ var appClientFiles = [
   'app_client/auth/register/register.controller.js',
   'app_client/locationDetail/locationDetail.controller.js',
   'app_client/reviewModal/reviewModal.controller.js',
-  'app_client/common/services/loc8rData.service.js',
   'app_client/common/services/geolocation.service.js',
+  'app_client/common/services/loc8rData.service.js',
   'app_client/common/filters/formatDistance.filter.js',
   'app_client/common/services/authentication.service.js',
   'app_client/common/filters/addHtmlLineBreaks.filter.js',
