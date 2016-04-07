@@ -14,6 +14,7 @@ function geolocation () {
 			cbNoGeo();
 		}
 	};
+	console.log(location);
 	return {
 		getPosition : getPosition
 	};
