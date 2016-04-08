@@ -44,7 +44,8 @@ module.exports.locationsListByDistance = function(req, res) {
     });
     return;
   }
-  Loc.geoNear(point, geoOptions, function(err, results, stats) {
+  var coordinates = [lng, lat];
+  Loc.geoNear(coordinates, geoOptions, function(err, results, stats) {
     var locations;
     console.log('Geo Results', results);
     console.log('Geo stats', stats);

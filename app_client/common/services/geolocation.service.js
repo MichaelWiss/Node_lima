@@ -1,6 +1,4 @@
 (function () {
-
-
 angular
  .module('loc8rApp')
  .service('geolocation', geolocation);
@@ -14,10 +12,11 @@ function geolocation () {
 			cbNoGeo();
 		}
 	};
-	console.log(location);
+
 	return {
 		getPosition : getPosition
 	};
+	console.log(geolocation);
 }
 
 })();
