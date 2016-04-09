@@ -16,7 +16,7 @@
         rating : formData.rating,
         reviewText : formData.reviewText
       })
-        .success(function (data) {
+        .success(function(data) {
           vm.modal.close(data);
         })
         .error(function (data) {
@@ -32,6 +32,7 @@
         return false;
       } else {
         vm.doAddReview(vm.locationData.locationid, vm.formData);
+        return false;
       }
     };
 
